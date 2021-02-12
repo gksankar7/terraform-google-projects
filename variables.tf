@@ -24,3 +24,15 @@ variable "random_project_id" {
   type        = bool
   default     = false
 }
+
+variable "per_projects_admins" {
+  type        = map(string)
+  description = "IAM-style members per projects who will get extended permissions."
+  default     = {}
+}
+
+variable "all_projects_admins" {
+  type        = list(string)
+  description = "List of IAM-style members that will get the extended permissions across all the projects."
+  default     = []
+}
