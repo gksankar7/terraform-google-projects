@@ -29,8 +29,12 @@ locals {
 }
 
 resource "google_projects" "projects" {
-  for_each = toset(var.names)
-
-  display_name = "${local.prefix}${each.value}"
-  parent       = var.parent
+  name            = var.project_name
+  project_id      = random_id.id.hex
+  org_id          = var.org_id
+}
+    
+resource "random_id" "id" {
+  byte_length = 4
+  prefix      = var.project_name
 }
